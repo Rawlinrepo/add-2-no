@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-dep
+  namespace: addno
+  labels:
+    app: backend-dep
+spec:
+  selector:
+    matchLabels:
+      app: backend-dep
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: backend-dep
+    spec:
+      containers:
+      - name: backend-pod
+        image: rawlin08/add-2-no:backend
+        imagePullPolicy: Always
+        env:
+          - name: PORT
+            value: "5000"
+        resources:
+          requests:
+            cpu: "20m"
+            memory: "55M"
+          limits:
+            cpu: "30m"
+            memory: "60M"      
+        ports:
+        - containerPort: 5000
+      restartPolicy: Always
+      
+
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name:  backend-service
+  namespace: addno
+spec:
+  selector:
+    app: backend-dep
+  type: NodePort
+  ports:
+  - port:  5000
+    targetPort:  5000
+    nodePort: 30010

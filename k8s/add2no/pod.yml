@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-test
+  namespace: addno
+spec:
+  containers:
+  - name: frontend
+    image: rawlin08/add-2-no:frontend3 # replace with your latest working image tag if different
+    ports:
+      - containerPort: 80
+

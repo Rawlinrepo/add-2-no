@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-dep
+  namespace: addno
+  labels:
+    app: frontend-dep
+spec:
+  selector:
+    matchLabels:
+      app: frontend-dep
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: frontend-dep
+    spec:
+      containers:
+      - name: frontend-dep
+        image: rawlin08/add-2-no:frontend4
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "20m"
+            memory: "55M"
+          limits:
+            cpu: "30m"
+            memory: "60M"
+        ports:
+        - containerPort: 80
+      restartPolicy: Always
+      
+
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name:  frontend-svc
+  namespace: addno
+spec:
+  selector:
+    app:  frontend-dep
+  type: NodePort
+  ports:
+  - nodePort: 30005
+    port:  80
+    targetPort:  80
