@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: frontend-container
+    build:
+      context: ./frontend
+      dockerfile: dockerfile
+      args:
+        REACT_APP_API_URL: 'http://backend:5055'
+    
+    ports:
+      - "85:80"
+    networks:
+      - mynetwork
+    depends_on:
+      - backend
+
+  backend:
+    container_name: backend-container
+    build:
+      context: ./backend
+      dockerfile: dockerfile
+    ports:
+      - "5055:5055"
+    networks:
+      - mynetwork
+    environment:
+      - PORT=5055
+    
+
+networks:
+  mynetwork:
