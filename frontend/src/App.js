@@ -39,7 +39,7 @@ function App() {
   };
 
   return (
-    <div style={{ backgroundColor: 'blue', color: 'white', minHeight: '100vh', padding: '20px' }}>
+    <div style={{ backgroundColor: 'black', color: 'white', minHeight: '100vh', padding: '20px' }}>
       <h1>Add Two Numbers</h1>
       <form onSubmit={handleSubmit}>
         <input 
