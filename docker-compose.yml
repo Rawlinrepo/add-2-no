@@ -3,9 +3,10 @@ version: '3.8'
 services:
   frontend:
     container_name: frontend
-    build:
-      context: ./frontend
-      dockerfile: dockerfile
+    image: rawlin08/frontend:latest
+    #build:
+      #context: ./frontend
+      #dockerfile: dockerfile
       #args:
         #REACT_APP_API_URL: 'http://backend:5055'
     ports:
