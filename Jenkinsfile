@@ -6,8 +6,8 @@ pipeline{
     stages{
         stage("hello"){
             steps{
+                echo "Version 1"
                 script{
-                    echo "Version 1"
                     hello()
                 }
             }
