@@ -7,7 +7,7 @@ services:
       context: ./frontend
       dockerfile: dockerfile
       args:
-        REACT_APP_API_URL: 'http://16.16.182.24/:5000'
+        REACT_APP_API_URL: 'http://16.16.182.24:5000'
     
     ports:
       - "85:80"
