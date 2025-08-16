@@ -6,8 +6,8 @@ function App() {
   const [num2, setNum2] = useState('');
   const [result, setResult] = useState(null);
 
-  //const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
-    const API_URL = "http://51.20.134.254:5000";
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+  //  const API_URL = "http://51.20.134.254:5000";
 
   console.log(`Server running on ${API_URL}`);
 
