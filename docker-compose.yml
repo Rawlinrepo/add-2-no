@@ -3,7 +3,6 @@ version: '3.8'
 services:
   frontend:
     container_name: frontend
-    image: rawlin08/frontend:latest
     build:
       context: ./frontend
       dockerfile: dockerfile
