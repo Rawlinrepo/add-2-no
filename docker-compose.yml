@@ -17,9 +17,7 @@ services:
 
   backend:
     container_name: backend
-    build:
-      context: ./backend
-      dockerfile: dockerfile
+    image: rawlin08/add-2-no:backend
     ports:
       - "5000:5000"
     networks:
