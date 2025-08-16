@@ -1,4 +1,3 @@
-#C:\devops\Docker\add-2-no\frontend\dockerfile
 # Stage 1: Build React app
 FROM node:18 as build
 
