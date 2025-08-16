@@ -42,6 +42,8 @@ services:
       - MONGO_INITDB_DATABASE=numbers
     networks:
       - mynetwork
+    volumes:
+      - myvolume:/data/db
     
 
 networks:
