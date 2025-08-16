@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-depployment
+  namespace: addno
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: tiangolo/uvicorn-gunicorn-fastapi:python3.8
+        ports:
+        - containerPort: 80
+        env:
+        - name: MODULE_NAME
+          value: "main"
+        volumeMounts:
+        - name: app
+          mountPath: /app
+      volumes:
+      - name: app
+        configMap:
+          name: backend-code
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-code
+  namespace: addno
+data:
+  main.py: |
+    from fastapi import FastAPI
+    app = FastAPI()
+    @app.get("/ping")
+    def ping():
+        return {"message": "pong"}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: backend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+

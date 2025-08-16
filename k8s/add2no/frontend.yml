@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-test
+  namespace: addno
+spec:
+  containers:
+  - name: tester
+    image: curlimages/curl
+    command: [ "sleep", "3600" ]
+
