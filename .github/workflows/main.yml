@@ -17,7 +17,7 @@ jobs:
       - name: Test stage
         run: echo This is test stage
   build:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
