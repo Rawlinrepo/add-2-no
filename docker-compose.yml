@@ -8,7 +8,6 @@ services:
       dockerfile: dockerfile
       args:
         REACT_APP_API_URL: 'http://16.16.182.24:5000'
-    
     ports:
       - "85:80"
     networks:
@@ -27,6 +26,22 @@ services:
       - mynetwork
     environment:
       - PORT=5000
+      - MONGO_URI=mongodb://rawlin:rawlin@mongodb:27017/numbers?authSource=admin
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=rawlin
+      - MONGO_INITDB_ROOT_PASSWORD=rawlin
+      - MONGO_INITDB_DATABASE=numbers
+    networks:
+      - mynetwork
     
 
 networks:
