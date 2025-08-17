@@ -1,0 +1,16 @@
+name: Variables
+
+on:
+  workflow_dispatch
+
+env:
+  name: rawlin
+
+jobs:
+ greetings_job:
+  runs-on: ubuntu-latest
+  env:
+    greetings: Hello
+  steps:
+    - name: Print Message from variables
+      run: echo "$grettings $name"
