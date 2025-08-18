@@ -19,6 +19,6 @@ jobs:
  build:
   runs-on: ubuntu-latest
   steps:
-  - name: login
-  - run: docker login -u rawlin -p rawlin
+    - name: login
+      run: docker login -u rawlin -p rawlin
   
