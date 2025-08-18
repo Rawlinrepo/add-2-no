@@ -15,3 +15,10 @@ jobs:
     - name: Print Message from variables
       run: echo "$greetings $name",
            echo "Your full name is ${{ vars.MY_NAM }}"
+
+ build:
+  runs-on: ubuntu-latest
+  steps:
+  - name: login
+  - run: docker login -u rawlin -p rawlin
+  
