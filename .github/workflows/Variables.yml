@@ -14,4 +14,4 @@ jobs:
   steps:
     - name: Print Message from variables
       run: echo "$greetings $name",
-           echo "Your full name is ${{ vars.MY_NAME }}"
+           echo "Your full name is ${{ vars.MY_NAM }}"
